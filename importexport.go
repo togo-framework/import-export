@@ -73,7 +73,7 @@ func Register(r Resource) {
 type Service struct{ k *togo.Kernel }
 
 func init() {
-	togo.RegisterProviderFunc("import-export", togo.PriorityService, func(k *togo.Kernel) error {
+	togo.RegisterProviderFunc("import-export", togo.PriorityLate+10, func(k *togo.Kernel) error {
 		s := &Service{k: k}
 		k.Set("import-export", s)
 		if k.Router != nil {
